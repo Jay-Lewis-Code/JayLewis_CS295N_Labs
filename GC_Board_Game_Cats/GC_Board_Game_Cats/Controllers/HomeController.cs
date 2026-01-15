@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using Group_A_Community_Site.Models;
+using GC_Board_Game_Cats.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Group_A_Community_Site.Controllers
+namespace GC_Board_Game_Cats.Controllers
 {
     public class HomeController : Controller
     {

@@ -1,4 +1,4 @@
-namespace Group_A_Community_Site.Models
+namespace GC_Board_Game_Cats.Models
 {
     public class ErrorViewModel
     {
