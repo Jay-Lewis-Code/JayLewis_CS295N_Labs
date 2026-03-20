@@ -1,65 +1,56 @@
-﻿using GC_Board_Game_Cats.Models;
+﻿using GC_Board_Game_Cats.Data;
+using GC_Board_Game_Cats.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace GC_Board_Game_Cats.Controllers
 {
     public class BlogController : Controller
     {
-        // In-memory storage for blog posts
-        private static List<BlogPost> blogPosts = new List<BlogPost>();
+        AppDbContext context;
 
-        // Mock users
-        private static List<AppUser> appUsers = new List<AppUser>
+        public BlogController(AppDbContext c)
         {
-            new AppUser { Id = 1, Username = "admin", Email = "admin@example.com" },
-            new AppUser { Id = 2, Username = "contributor", Email = "contributor@example.com" }
-        };
+            context = c;
+        }
 
         public IActionResult Index()
         {
-            // Pass blog posts to view
+            var blogPosts = context.BlogPosts
+                .Include(b => b.AppUser)
+                .OrderByDescending(b => b.DatePosted)
+                .ToList();
             return View(blogPosts);
         }
 
         public IActionResult AboutAuthor()
         {
-            // About the author page
             return View();
         }
 
-        // GET: Blog/Create
+        [HttpGet]
         public IActionResult Create()
         {
-            ViewData["Users"] = appUsers;
+            ViewData["Users"] = context.AppUsers.ToList();
             return View();
         }
 
-        // POST: Blog/Create
         [HttpPost]
         public IActionResult Create(BlogPost blogPost)
         {
-            // Set ID
-            blogPost.Id = blogPosts.Count + 1;
-
-            // Set the date posted to current date/time
             blogPost.DatePosted = DateTime.Now;
+            // Set to admin user if not provided
+            if (blogPost.AppUserId == 0)
+            {
+                blogPost.AppUserId = 1;
+            }
 
-            // Set the AppUser to admin
-            blogPost.AppUser = appUsers[0];
+            context.BlogPosts.Add(blogPost);
+            context.SaveChanges();
 
-            // Add to blog posts list
-            blogPosts.Add(blogPost);
-
-            // Echo back the submitted post with success message
-            ViewData["SuccessMessage"] = "Blog post created successfully!";
-            ViewData["SubmittedPost"] = blogPost;
-            ViewData["Users"] = appUsers;
-
-            return View("Create", blogPost);
+            return RedirectToAction("Index");
         }
-
     }
 }
