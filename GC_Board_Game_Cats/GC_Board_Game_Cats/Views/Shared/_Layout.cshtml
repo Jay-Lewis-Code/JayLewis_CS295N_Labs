@@ -20,11 +20,27 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Home
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="homeDropdown">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Overview">Overview</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="References">References</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" id="blogDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Blog
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="blogDropdown">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Blog" asp-action="Index">Blog Posts</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Blog" asp-action="Create">Create</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Blog" asp-action="AboutAuthor">About Author</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Blog" asp-action="Index">Blog</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Quiz" asp-action="Index">Quiz</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Gallery" asp-action="Index">Gallery</a>
