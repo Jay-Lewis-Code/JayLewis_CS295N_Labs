@@ -4,9 +4,13 @@
     Group C Info Site
     Blog Page
 *@
+
+@model List<GC_Board_Game_Cats.Models.BlogPost>
+
 @{
     ViewData["Title"] = "Blog Page";
 }
+
 <h1>Board Game Cats Blog</h1>
 <p class="lead">Latest articles, tips, and stories from our community.</p>
 
@@ -14,43 +18,36 @@
     <div class="col-md-8">
         <h3>Featured Posts</h3>
 
-        <article class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Getting Started with Board Games and Cats</h5>
-                <p class="card-text">Learn the basics of creating a cat-friendly gaming environment and setting up your gaming space.</p>
-                <small class="text-muted">Published: March 18, 2026</small>
-                <br />
-                <a href="#" class="btn btn-sm btn-outline-primary mt-2">Read More</a>
-            </div>
-        </article>
-
-        <article class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Best Cat-Themed Board Games</h5>
-                <p class="card-text">Our curated selection of board games featuring feline themes and cat-related gameplay mechanics.</p>
-                <small class="text-muted">Published: March 15, 2026</small>
-                <br />
-                <a href="#" class="btn btn-sm btn-outline-primary mt-2">Read More</a>
-            </div>
-        </article>
-
-        <article class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Gaming Tips for Cat Owners</h5>
-                <p class="card-text">Practical strategies to keep your gaming experience smooth and enjoyable with your feline companions.</p>
-                <small class="text-muted">Published: March 12, 2026</small>
-                <br />
-                <a href="#" class="btn btn-sm btn-outline-primary mt-2">Read More</a>
-            </div>
-        </article>
+        @if (Model != null && Model.Count > 0)
+        {
+            @foreach (var post in Model)
+            {
+                <article class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">@post.Title</h5>
+                        <p class="card-text">@post.Text</p>
+                        <small class="text-muted">
+                            By @post.AppUser?.Username |
+                            Published: @post.DatePosted.ToString("MMMM dd, yyyy") |
+                            Rating: @post.Rating/5
+                        </small>
+                        <br />
+                        <a href="#" class="btn btn-sm btn-outline-primary mt-2">Read More</a>
+                    </div>
+                </article>
+            }
+        }
+        else
+        {
+            <p class="text-muted">No blog posts yet. <a asp-action="Create">Create the first one!</a></p>
+        }
     </div>
 
     <div class="col-md-4">
         <div class="card mb-3">
             <div class="card-body">
-                <h5 class="card-title">About the Author</h5>
-                <p class="card-text">Learn about the person behind Board Game Cats.</p>
-                <a href="@Url.Action("AboutAuthor", "Blog")" class="btn btn-sm btn-primary w-100">Read Bio</a>
+                <h5 class="card-title">Admin Actions</h5>
+                <a asp-action="Create" asp-controller="Blog" class="btn btn-sm btn-success w-100">Create New Post</a>
             </div>
         </div>
 
@@ -58,10 +55,8 @@
             <div class="card-body">
                 <h5 class="card-title">Other Pages</h5>
                 <ul class="list-unstyled">
-                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                    <li><a href="@Url.Action("Overview", "Home")">Overview</a></li>
-                    <li><a href="@Url.Action("References", "Home")">References</a></li>
-                    <li><a href="@Url.Action("Index", "Gallery")">Gallery</a></li>
+                    <li><a asp-action="Index" asp-controller="Home">Home</a></li>
+                    <li><a asp-action="AboutAuthor" asp-controller="Blog">About Author</a></li>
                 </ul>
             </div>
         </div>

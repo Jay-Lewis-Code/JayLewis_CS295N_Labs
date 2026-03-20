@@ -1,0 +1,70 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@model GC_Board_Game_Cats.Models.BlogPost
+
+@{
+    ViewData["Title"] = "Create Blog Post";
+}
+
+<div class="container mt-4">
+    <h2>Create New Blog Post</h2>
+    <hr />
+
+    <form method="post">
+        <div class="form-group mb-3">
+            <label asp-for="Title" class="form-label">Post Title</label>
+            <input asp-for="Title" class="form-control" placeholder="Enter blog post title" required />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Text" class="form-label">Post Content</label>
+            <textarea asp-for="Text" class="form-control" rows="8" placeholder="Enter your blog post content here..." required></textarea>
+            <span asp-validation-for="Text" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="AppUserId" class="form-label">Author</label>
+            <select asp-for="AppUserId" class="form-control" required>
+                <option value="">-- Select an author --</option>
+                @foreach (var user in ViewData["Users"] as List<GC_Board_Game_Cats.Models.AppUser>)
+                {
+                    <option value="@user.Id">@user.Username</option>
+                }
+            </select>
+            <span asp-validation-for="AppUserId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Rating" class="form-label">Rating (0-5)</label>
+            <input asp-for="Rating" type="number" class="form-control" min="0" max="5" placeholder="Rate this post" required />
+            <span asp-validation-for="Rating" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <button type="submit" class="btn btn-primary">Create Post</button>
+            <a asp-action="Index" asp-controller="Blog" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+
+    @if (ViewData["SubmittedPost"] != null)
+    {
+        <div class="alert alert-success mt-4" role="alert">
+            <h4 class="alert-heading">Post Created Successfully!</h4>
+            <hr />
+            @{
+                var submittedPost = ViewData["SubmittedPost"] as GC_Board_Game_Cats.Models.BlogPost;
+            }
+            <p><strong>Title:</strong> @submittedPost.Title</p>
+            <p><strong>Content:</strong> @submittedPost.Text</p>
+            <p><strong>Author:</strong> @submittedPost.AppUser?.Username</p>
+            <p><strong>Posted:</strong> @submittedPost.DatePosted.ToString("MMMM dd, yyyy")</p>
+            <p><strong>Rating:</strong> @submittedPost.Rating/5</p>
+            <hr />
+            <a asp-action="Index" asp-controller="Blog" class="btn btn-primary">Back to Blog</a>
+        </div>
+    }
+</div>
