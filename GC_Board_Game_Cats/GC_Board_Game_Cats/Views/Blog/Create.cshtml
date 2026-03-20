@@ -32,7 +32,7 @@
                 <option value="">-- Select an author --</option>
                 @foreach (var user in ViewData["Users"] as List<GC_Board_Game_Cats.Models.AppUser>)
                 {
-                    <option value="@user.Id">@user.Username</option>
+                    <option value="@user.UserId">@user.Username</option>
                 }
             </select>
             <span asp-validation-for="AppUserId" class="text-danger"></span>
