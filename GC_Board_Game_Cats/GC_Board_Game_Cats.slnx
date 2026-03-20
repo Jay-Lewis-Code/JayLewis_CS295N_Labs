@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="GC_Board_Game_Cats.Tests/GC_Board_Game_Cats.Tests.csproj" Id="ce677fe8-1f51-4073-bf50-eff8a4704805" />
   <Project Path="GC_Board_Game_Cats/GC_Board_Game_Cats.csproj" />
 </Solution>

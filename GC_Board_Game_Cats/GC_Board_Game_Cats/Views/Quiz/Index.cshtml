@@ -1,0 +1,35 @@
+﻿@model GC_Board_Game_Cats.Models.QuizQuestions
+
+@{
+    ViewData["Title"] = "90s Alternative Rock Quiz";
+}
+
+<div class="container mt-5">
+    <h1>1990-2000 Alternative Rock Quiz</h1>
+    <p class="lead">Test your knowledge of grunge and alternative rock legends!</p>
+
+    <form method="post">
+        <div class="question-container mb-4 p-3 border rounded bg-light">
+            @Model.Questions[1]<br />
+            <input class="form-control" name="answer1" value="@Model.UserAnswers[1]"/> 
+            @((Model.UserAnswers[1] == "") ? "" : Model.Results[1] ? "Right" : "Wrong - Answer: " + Model.Answers[1])
+            <br />
+        </div>
+
+        <div class="question-container mb-4 p-3 border rounded bg-light">
+            @Model.Questions[2]<br />
+            <input class="form-control" name="answer2" value="@Model.UserAnswers[2]" />
+            @((Model.UserAnswers[2] == "") ? "" : Model.Results[2] ? "Right" : "Wrong - Answer: " + Model.Answers[2])
+            <br />
+        </div>
+
+        <div class="question-container mb-4 p-3 border rounded bg-light">
+            @Model.Questions[3]<br />
+            <input class="form-control" name="answer3" value="@Model.UserAnswers[3]" />
+            @((Model.UserAnswers[3] == "") ? "" : Model.Results[3] ? "Right" : "Wrong - Answer: " + Model.Answers[3])
+            <br />
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg">Submit Answers</button>
+    </form>
+</div>
