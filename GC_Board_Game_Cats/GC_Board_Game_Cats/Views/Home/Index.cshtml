@@ -1,12 +1,47 @@
-﻿@{
+﻿@*
+    Jason Lewis
+    CS295N Lab 02
+    Group C Info Site
+    Home Page
+*@
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mb-5">
+    <h1 class="display-4">Welcome to Board Game Cats</h1>
+    <p class="lead">Your community hub for tabletop gaming with feline companions</p>
+</div>
 
-    <!-- For Home Page Links ONLY (different than other controllers) -->
-    <a href="Home/Cats">This is just an example of how to create a page link from the home view</a>
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Learn More About Us</h5>
+                <p class="card-text">Discover what Board Game Cats is all about and why we love combining our two passions.</p>
+                <a href="@Url.Action("Overview", "Home")" class="btn btn-primary">Read Overview</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Our Resources</h5>
+                <p class="card-text">Explore our curated sources and references for board gaming and cat behavior information.</p>
+                <a href="@Url.Action("References", "Home")" class="btn btn-primary">View References</a>
+            </div>
+        </div>
+    </div>
+</div>
 
+<hr class="my-5" />
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Explore More</h3>
+        <ul class="list-group">
+            <li class="list-group-item"><a href="@Url.Action("Index", "Blog")">📝 Read Our Blog</a> - Latest posts and articles</li>
+            <li class="list-group-item"><a href="@Url.Action("Index", "Gallery")">🖼️ View Gallery</a> - Photos from our community</li>
+        </ul>
+    </div>
 </div>

@@ -1,0 +1,58 @@
+﻿@*
+    Jason Lewis
+    CS295N Lab 02
+    Group C Info Site
+    Blog > About Author Subpage
+*@
+
+
+@{
+    ViewData["Title"] = "About Author";
+}
+<h1>About the Author</h1>
+
+<div class="row mt-4">
+    <div class="col-md-8">
+        <h3>Jay Lewis</h3>
+        <p class="lead">Content Creator & Community Founder</p>
+
+        <h4 class="mt-4">Background</h4>
+        <p>
+            Jay Lewis is a passionate board game enthusiast and cat lover with over 5 years of combined experience in both hobbies.
+            What started as a personal blog documenting gaming sessions with a tabby named Whiskers has evolved into a thriving
+            community dedicated to combining these two passions.
+        </p>
+
+        <h4>Why Board Game Cats?</h4>
+        <p>
+            After years of gaming with cats underfoot, Jay realized there was a gap in the community for resources specifically
+            tailored to the unique challenges and joys of gaming with feline companions. Board Game Cats was created to fill that
+            gap and provide a welcoming space for others who share these interests.
+        </p>
+
+        <h4>Interests</h4>
+        <ul>
+            <li>Strategic board games and eurogames</li>
+            <li>Feline behavior and enrichment</li>
+            <li>Community building and engagement</li>
+            <li>Content creation and storytelling</li>
+        </ul>
+
+        <h4>Get in Touch</h4>
+        <p>Have a story to share or a question? Feel free to reach out through our community channels.</p>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Navigation</h5>
+                <ul class="list-unstyled">
+                    <li><a href="@Url.Action("Index", "Blog")">Back to Blog</a></li>
+                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li><a href="@Url.Action("Overview", "Home")">Overview</a></li>
+                    <li><a href="@Url.Action("References", "Home")">References</a></li>
+                    <li><a href="@Url.Action("Index", "Gallery")">Gallery</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "References";
+}
+
+<h1>References & Sources</h1>
+<p class="lead">Curated sources and resources for board gaming and cat behavior information.</p>
+
+<div class="row mt-4">
+    <div class="col-md-8">
+        <h3>Online Resources</h3>
+        <ul>
+            <li><a href="https://www.boardgamegeek.com" target="_blank">Board Game Geek</a> - Comprehensive board game database</li>
+            <li><a href="https://www.kickstarter.com/discover/categories/games" target="_blank">Kickstarter Games</a> - New and upcoming games</li>
+            <li><a href="https://www.aspca.org" target="_blank">ASPCA</a> - Pet care information</li>
+            <li><a href="https://www.thesprucepets.com" target="_blank">The Spruce Pets</a> - Cat behavior articles</li>
+        </ul>
+
+        <h3 class="mt-4">Print Resources</h3>
+        <ul>
+            <li><strong>Understanding Feline Behavior</strong> - Smith, J. (2023)</li>
+            <li><strong>The Complete Board Game Encyclopedia</strong> - Johnson, M. (2022)</li>
+            <li><strong>Modern Tabletop Gaming</strong> - Williams, R. (2021)</li>
+        </ul>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Navigation</h5>
+                <ul class="list-unstyled">
+                    <li><a href="@Url.Action("Overview", "Home")">Read Overview</a></li>
+                    <li><a href="@Url.Action("Index", "Blog")">Visit Blog</a></li>
+                    <li><a href="@Url.Action("Index", "Gallery")">View Gallery</a></li>
+                    <li><a href="@Url.Action("Index", "Home")">Back to Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

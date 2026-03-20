@@ -1,0 +1,37 @@
+﻿@*
+    Jason Lewis
+    CS295N Lab 02
+    Group C Info Site
+    Gallery Page (My Choice)
+*@
+@{
+    ViewData["Title"] = "Cat Gallery Page";
+}
+<h1>Gallery</h1>
+<p class="lead">Photos and images from our board gaming community.</p>
+
+<div class="row mt-4">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Gaming Setups</h5>
+                <p class="card-text">Showcase your cat-friendly gaming spaces and board game collections.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Community Photos</h5>
+                <p class="card-text">Images submitted by our members featuring their gaming moments with cats.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <p class="text-muted">Gallery content coming soon! Submit your photos to be featured here.</p>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Back to Home</a>
+    </div>
+</div>
