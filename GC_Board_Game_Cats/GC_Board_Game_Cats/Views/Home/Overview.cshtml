@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Overview";
+}
+
+<h1>Overview</h1>
+<p class="lead">A brief description of Board Game Cats and our mission.</p>
+
+<div class="row mt-4">
+    <div class="col-md-8">
+        <h3>What is Board Game Cats?</h3>
+        <p>Board Game Cats is a community dedicated to combining two passions: tabletop gaming and feline companionship. We explore how cats can enrich your gaming experience and provide resources for cat-loving gamers.</p>
+
+        <h3 class="mt-4">Our Mission</h3>
+        <p>To create a welcoming space where board game enthusiasts and cat lovers can share tips, strategies, and stories about gaming with their furry friends.</p>
+
+        <h3 class="mt-4">What You'll Find Here</h3>
+        <ul>
+            <li>Articles about gaming with cats</li>
+            <li>Cat-themed game recommendations</li>
+            <li>Tips for creating a cat-friendly gaming environment</li>
+            <li>Community stories and experiences</li>
+        </ul>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="@Url.Action("References", "Home")">View References</a></li>
+                    <li><a href="@Url.Action("Index", "Blog")">Read the Blog</a></li>
+                    <li><a href="@Url.Action("Index", "Gallery")">View Gallery</a></li>
+                    <li><a href="@Url.Action("Index", "Home")">Back to Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,11 +10,19 @@ namespace GC_Board_Game_Cats.Controllers
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        public IActionResult Overview()
         {
+            // Overview subpage
             return View();
         }
+
+        public IActionResult References()
+        {
+            // References subpage
+            return View();
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
