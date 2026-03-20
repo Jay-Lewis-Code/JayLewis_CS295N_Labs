@@ -8,10 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // Add DbContext
-var baseConnectionString = builder.Configuration.GetConnectionString("MySqlConnection");
-var user = builder.Configuration["DbUser"];
-var password = builder.Configuration["DbPassword"];
-var connectionString = $"{baseConnectionString}userid={user};password={password};";
+var connectionString = builder.Configuration.GetConnectionString("MySqlConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
@@ -35,5 +32,11 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    SeedData.Seed(dbContext);
+}
 
 app.Run();
